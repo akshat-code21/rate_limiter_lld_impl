@@ -21,7 +21,7 @@ A Java implementation of a **Sliding Window Rate Limiter** using the **Proxy** a
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/akshat-code21/rate_limiter_lld_impl
    cd rate-limiter
    ```
 
