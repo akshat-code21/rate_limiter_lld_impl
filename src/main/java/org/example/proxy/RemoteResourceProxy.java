@@ -1,9 +1,9 @@
-package org.example;
+package org.example.proxy;
 
-import java.time.LocalDateTime;
-import java.util.concurrent.ConcurrentSkipListSet;
+import org.example.strategy.RateLimittingStrategy;
+import org.example.resource.IResource;
 
-public class RemoteResourceProxy implements IResource{
+public class RemoteResourceProxy implements IResource {
     private final RateLimittingStrategy rateLimittingStrategy;
     public RemoteResourceProxy(RateLimittingStrategy rateLimittingStrategy){
         this.rateLimittingStrategy = rateLimittingStrategy;

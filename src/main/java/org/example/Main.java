@@ -1,17 +1,20 @@
 package org.example;
 
+import org.example.proxy.RemoteResourceProxy;
+import org.example.resource.IResource;
+import org.example.resource.RemoteResource;
+import org.example.strategy.RateLimittingStrategy;
+import org.example.strategy.SlidingWindowStrategy;
+
 public class Main {
-    public static void main(String[] args) {
-        RemoteResourceProxy rrp = new RemoteResourceProxy(new SlidingWindowStrategy(3,4,new RemoteResource()));
-        int i =0;
-        while(i < 10){
-            i++;
-            try {
-                rrp.getResponse();
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                throw new RuntimeException(ex);
-            }
+    public static void main(String[] args) throws InterruptedException {
+        IResource resource = new RemoteResource();
+        RateLimittingStrategy strategy = new SlidingWindowStrategy(3, 4, resource);
+        RemoteResourceProxy proxy = new RemoteResourceProxy(strategy);
+
+        for (int i = 0; i < 10; i++) {
+            proxy.getResponse();
+            Thread.sleep(1000);
         }
     }
 }
