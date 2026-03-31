@@ -7,7 +7,7 @@ A Java implementation of a **Sliding Window Rate Limiter** using the **Proxy** a
 
 ## UML Diagram
 
-![UML Diagram](UML.png)
+![UML Diagram](UML1.png)
 
 ---
 
