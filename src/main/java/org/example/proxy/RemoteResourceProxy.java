@@ -1,6 +1,5 @@
 package org.example.proxy;
 
-import org.example.resource.RemoteResource;
 import org.example.strategy.RateLimittingStrategy;
 import org.example.resource.IResource;
 
