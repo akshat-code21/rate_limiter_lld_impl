@@ -9,8 +9,8 @@ import org.example.strategy.SlidingWindowStrategy;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         IResource resource = new RemoteResource();
-        RateLimittingStrategy strategy = new SlidingWindowStrategy(3, 4, resource);
-        RemoteResourceProxy proxy = new RemoteResourceProxy(strategy);
+        RateLimittingStrategy strategy = new SlidingWindowStrategy(3, 4);
+        RemoteResourceProxy proxy = new RemoteResourceProxy(strategy, resource);
 
         for (int i = 0; i < 10; i++) {
             proxy.getResponse();

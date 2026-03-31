@@ -11,16 +11,14 @@ public class SlidingWindowStrategy implements RateLimittingStrategy {
     private final AtomicLong counter = new AtomicLong(0);
     private final int maxRequests;
     private final int windowLength;
-    private final IResource rr;
 
-    public SlidingWindowStrategy(int maxRequests, int windowLength, IResource rr) {
+    public SlidingWindowStrategy(int maxRequests, int windowLength) {
         this.maxRequests = maxRequests;
         this.windowLength = windowLength;
-        this.rr = rr;
     }
 
     @Override
-    public void limit() {
+    public boolean limit() {
         boolean allowed;
         synchronized (this) {
             Instant now = Instant.now();
@@ -34,8 +32,6 @@ public class SlidingWindowStrategy implements RateLimittingStrategy {
             }
         }
 
-        if (allowed) {
-            rr.getResponse();
-        }
+        return allowed;
     }
 }

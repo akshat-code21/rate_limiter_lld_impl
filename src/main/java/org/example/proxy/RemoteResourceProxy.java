@@ -1,15 +1,22 @@
 package org.example.proxy;
 
+import org.example.resource.RemoteResource;
 import org.example.strategy.RateLimittingStrategy;
 import org.example.resource.IResource;
 
 public class RemoteResourceProxy implements IResource {
     private final RateLimittingStrategy rateLimittingStrategy;
-    public RemoteResourceProxy(RateLimittingStrategy rateLimittingStrategy){
+    private final IResource remoteResource;
+
+    public RemoteResourceProxy(RateLimittingStrategy rateLimittingStrategy, IResource remoteResource) {
         this.rateLimittingStrategy = rateLimittingStrategy;
+        this.remoteResource = remoteResource;
     }
+
     @Override
     public void getResponse() {
-        rateLimittingStrategy.limit();
+        if (rateLimittingStrategy.limit()) {
+            remoteResource.getResponse();
+        }
     }
 }
