@@ -1,4 +1,4 @@
-# Sliding Window Rate Limiter
+# Sliding Window And Fixed Window Rate Limiter
 
 A Java implementation of a **Sliding Window Rate Limiter** using the **Proxy** and **Strategy** design patterns. Built for Low-Level Design (LLD) practice.
 
